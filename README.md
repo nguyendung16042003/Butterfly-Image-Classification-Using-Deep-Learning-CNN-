@@ -1,190 +1,244 @@
-Heart Disease Prediction System project(Deep Learning Web)
+Butterfly Image Classification Using Deep Learning (CNN)
 
 📊 Project Summary¶
 1. Introduction
 
 
-This project develops a system for predicting heart disease risk based on patient medical data. It utilizes Deep Learning (Artificial Neural Network - ANN) to analyze health factors and provide risk predictions.
+This project aims to classify butterfly species from images using Convolutional Neural Networks (CNN). It involves data preprocessing, model training, and evaluation to achieve accurate species identification.
 
 2.Technologies Used
  
-•	Machine Learning / Deep Learning: TensorFlow, Keras
+Python,NumPy,Pandas,Matplotlib
 
-•	Data Processing: Pandas, NumPy
+TensorFlow/Keras - For building and training the CNN model.
 
-•	Web Framework: Flask
+OpenCV - For image processing.
 
-•	Frontend: HTML, CSS, JavaScript
 
-•	Database: SQLite / MySQL
-
-•	Deployment: FastAPI, Docker
 
 3.Dataset
 
-•	The dataset consists of 1,025 samples with 14 medical features, including: 
+The Butterfly Image Classification dataset consists of 6,499 images, divided into:
 
-  - age (Age), sex (Gender), cp (Chest Pain), chol (Cholesterol), thalach (Max Heart Rate), oldpeak (ST Depression), thal (Thalassemia index), etc.
+Training Set: 5,000 images for training the CNN model.
 
-  -	"target" column: The prediction outcome (0: No disease, 1: Has heart disease).
+Test Set: 1,499 images for evaluating the model's accuracy.
+
 
 4. System Workflow
 
-1️⃣ Data Preprocessing: Cleaning, normalizing, and handling missing data.
+1️⃣ Data Preprocessing – Load, resize, normalize images, and split into training & test sets.
 
-2️⃣ Model Training: Using an Artificial Neural Network (ANN) to learn from medical data.9
+2️⃣ Model Development – Build, train, and evaluate a CNN model for classification.
 
-3️⃣ Prediction & Evaluation: Testing the model on new data and optimizing results.
+3️⃣ Prediction & Evaluation – Use the trained model to classify butterfly images and assess performance.
 
-4️⃣ Web Deployment: Users enter their health data on the web, and the system predicts heart disease risk.
 
-📊 Model Development (ANN)
+📊 Model Development (CNN)
 
-1.Importing essential libraries for data processing, visualization, machine learning, and deep learning.
+1️⃣ Data Preprocessing
 
-Data Handling & Visualization: pandas, numpy, matplotlib, seaborn
+ - Importing the train and test image files.
 
-Machine Learning: scikit-learn (train-test split, scaling, logistic regression, evaluation metrics)
+![image](https://github.com/user-attachments/assets/c0c379e9-f0cc-418b-b395-a148d4ff3f56)
+![image](https://github.com/user-attachments/assets/f5f76762-8348-4bde-b88e-5052e3b6e7de)
 
-Deep Learning: TensorFlow & Keras (Sequential model, Dense, Dropout layers)
+ - Importing essential libraries for data processing, visualization, model training, and evaluation. It includes:
 
-![image](https://github.com/user-attachments/assets/8a5765bf-15e9-4449-a31b-5cf30ef6b18a)
+pandas, numpy, os – Data handling.
 
-2.Load dataset: Read CSV file and display basic info.
+matplotlib, seaborn – Data visualization.
 
-Train-Test Split: Split data (85% train, 15% test) with stratification.
+sklearn – Data splitting & model evaluation.
 
-![image](https://github.com/user-attachments/assets/e450d8e8-36af-45c5-a846-0943ee3b41b3)
-![image](https://github.com/user-attachments/assets/e2e329f7-abe5-4c7a-ae5d-500f26e9486f)
+tensorflow.keras – CNN model creation and image preprocessing.
 
-3.Model Training: Fits the best model on training data.
+warnings – Suppressing unnecessary warnings.
 
-- LogisticRegression
+![image](https://github.com/user-attachments/assets/357fc3a7-dee3-4701-8508-faa3b0f4660d)
 
-Prediction: Generates predictions on test data.
+ - Data Analysis Step
 
-Confusion Matrix: Visualizes model performance with a heatmap.
+![image](https://github.com/user-attachments/assets/ab2522cf-9c77-4342-bc33-c20037d3854e)
 
-Evaluation: Calculates accuracy and prints a classification report.
+![image](https://github.com/user-attachments/assets/3359e93b-c85b-42d3-b088-8083afab1521)
 
-![image](https://github.com/user-attachments/assets/dbfc4c52-db30-436e-a757-521108e73717)
-![image](https://github.com/user-attachments/assets/d6937df5-4b02-46c0-b6d8-26d2e71a6c63)
+![image](https://github.com/user-attachments/assets/c79f45b7-93cf-4fb1-aa7c-972af6f4af16)
 
-- ANN Model: Uses a Sequential model with Dense layers, ReLU activation, and Dropout for regularization.
+![image](https://github.com/user-attachments/assets/98d09e25-9899-4edf-a289-905027b1761c)
+
+ - Analyzing the distribution of butterfly species in the dataset.
+
+Counts the number of images per species.
+
+Sorts the classes and plots a bar chart using Seaborn.
+
+Displays class names on the x-axis and image count on the y-axis.
+
+![image](https://github.com/user-attachments/assets/cce1309e-aa34-49ee-88ff-2a1f3becc10a)
+
+![image](https://github.com/user-attachments/assets/8f33acd5-ed87-4299-8bd1-7b8ac76955f1)
+
+
+-  Visualizing class distribution using a pie chart.
+
+Counts butterfly species occurrences.
+
+Uses a "magma" color palette for better distinction.
+
+Customizes the pie chart with edge color, labels, and a central circle for aesthetics.
+
+Displays percentage values for each species.
+
+![image](https://github.com/user-attachments/assets/7f32dda6-4178-4fec-94cd-3084fd96bd32)
+
+![image](https://github.com/user-attachments/assets/7cdd9b79-d98e-48e5-96da-cc078fc4958e)
+
+
+ - Displaying sample images from the dataset.
+
+Randomly selects 9 images using df.sample(9).Loads images from the training directory (train/train).
+Resizes images to (224, 224) for consistency.
+Normalizes pixel values to the range [0, 1].
+Displays a 3x3 grid of images with their respective class labels.
+
+![image](https://github.com/user-attachments/assets/29c2b0b4-7b13-45a9-9123-580e995f3095)
+
+ - Preparing image data for training and validation using ImageDataGenerator.
+
+Splits dataset into 4,100 training images and 900 validation images across 75 classes.
+
+Applies data augmentation (rotation, shifting, zooming, flipping) to improve model generalization.
+
+Rescales images to [0,1] for normalization.
+
+Loads images in batches of 32 with a target size of (224, 224).
+
+![image](https://github.com/user-attachments/assets/bee92733-4a5c-4474-9f33-828f5eaf01d5)
+
+2️⃣ Model Development(CNN)
+
+ - Defining and compile a CNN model for butterfly image classification.
+
+Architecture:
+
+4 convolutional layers (Conv2D) with ReLU activation.
+
+MaxPooling layers to reduce spatial dimensions.
+
+Flatten layer to convert features into a 1D vector.
+
+Dense layers (256 neurons with ReLU, 75 neurons with softmax for classification).
+
+Compilation:
+
+Optimizer: Adam
+
+Loss Function: Categorical Crossentropy (for multi-class classification).
+
+Metric: Accuracy
+ 
+   ![image](https://github.com/user-attachments/assets/a5a7c746-8549-43c4-9002-df9ede38deba)
+
+   ![image](https://github.com/user-attachments/assets/cd9b9e9b-c6c5-4391-ac4c-438f9a1b4c31)
+
+
+ - Running to train the CNN model with early stopping.
+
+Early Stopping:
+
+Monitors val_loss (or val_accuracy).
+
+Stops training if no improvement after 10 epochs.
+
+Restores the best model weights.
+
+Model Training (fit):
+
+Uses train_generator for training data.
+
+Runs for 50 epochs (unless early stopping occurs).
+
+Validates with val_generator.
+
+![image](https://github.com/user-attachments/assets/a5fcd3de-a3bb-4c5d-8299-ecf814b0c491)
+
+![image](https://github.com/user-attachments/assets/c1c04c5b-5fcb-40ed-8236-dbbb8dacd636)
+
+3️⃣ Prediction & Evaluation
+
+ - Visualizing training performance using Matplotlib.
+
+First subplot:
+
+Plots training and validation accuracy over epochs.
+
+Helps track model improvement.
+
+Second subplot:
+
+Plots training and validation loss over epochs.
+
+Helps detect overfitting or underfitting.
+
+Legend & Layout:
+
+Differentiates between train & validation data.
+
+Uses tight_layout() for better spacing.
+
+![image](https://github.com/user-attachments/assets/6ed8b8e5-8caa-4aee-8d8b-90f6e8fa0e77)
+![image](https://github.com/user-attachments/assets/5b146221-e459-4156-94d1-cc8652b276fd)
+
+- Saving the model as:
   
-![image](https://github.com/user-attachments/assets/d6b81e11-4caf-432f-853f-31627c3a87fe)
--![image](https://github.com/user-attachments/assets/f7253ea4-e6fb-40b8-835b-89b601c0b87a)
+![image](https://github.com/user-attachments/assets/b95d7d79-4322-45ec-8ce4-dff7338df6f0)
+
+![image](https://github.com/user-attachments/assets/42adf1c4-c7d6-4821-a9eb-fbeaa83928ae)
+
+ - Making predictions on the test set and save results:
+
+Predicts labels using the trained CNN model.
+
+Maps predicted class indices to actual class names.
+
+Creates a DataFrame with ID (image filenames) and label (predicted species).
+
+Saves results to submission.csv for further analysis or competition submission.
+
+Displays the first few predictions for verification.
+
+![image](https://github.com/user-attachments/assets/e67b2577-5aa8-4122-9336-1a0be03cb055)
+
+ - Install this result to your application:
+
+![image](https://github.com/user-attachments/assets/7ccc2528-614c-49d8-a8bf-9c2dfcac1985)
 
 
-4.Plot Training Progress: Visualizes model accuracy over epochs.
-
-Train vs Validation Accuracy: Compares model performance on training and validation data.
-
-Graph Elements:
-
-X-axis: Epochs
-
-Y-axis: Accuracy
-![image](https://github.com/user-attachments/assets/a72bb5bc-7b6d-478e-a0d2-98b964e1bdd5)
-
-📊 Build The Website 
-
-1.Main
-
-This code sets up a Flask-based web app for heart disease prediction, handling data with pandas/numpy and loading a pre-trained model with TensorFlow.
-
-![image](https://github.com/user-attachments/assets/16f8c28d-5cf5-4030-a1f5-74ba61a5e28d)
-
-This code loads a pre-trained machine learning model from the file "model.h5" using TensorFlow's load_model function.
-
-![image](https://github.com/user-attachments/assets/cb7c8262-b28b-4f28-960b-5ba0e8f02f40)
 
 
-This Flask application provides a heart disease prediction web service:
-
-index(): Renders the homepage (trangchu.html).
-
-nhapthongtin(): Handles form submission (GET/POST). Converts user input into a DataFrame and predicts heart disease using a trained model. Redirects to the results page.
-
-du_doan(): Processes POST requests for prediction. Converts input to DataFrame, makes a prediction, and renders the results (trangkqduketqua.html).
-
-![image](https://github.com/user-attachments/assets/c85a7dd5-65dc-48e3-b822-852feabde6a0)
-
-![image](https://github.com/user-attachments/assets/337ed293-1b67-4061-ae47-b1b7bc3c548a)
-
-2. Trangchu.html
-
-This is the homepage interface for the Heart Disease Prediction System, built using Flask and Bootstrap 5. Key features include:
-
-Animated Navbar: Displays a welcome message with a scrolling effect.
-
-Visually Appealing Design: Gradient background with animations (marquee, pulse, zoomOut, fadeIn).
-
-![image](https://github.com/user-attachments/assets/6ef70803-46ab-4bf0-b831-b4cc4463d062)
-
-Interactive "Enter Information" Button:
-
-The main content fades out and disappears.
-
-An email input form appears after clicking the button.
-
-Email Confirmation Before Proceeding: Users must enter their email before being redirected to the health information input page (/trangnhapthongtin).
 
 
-![image](https://github.com/user-attachments/assets/345bade5-f71e-4a63-a3a8-ab00b149233f)
-
-3. Trangnhapthongtin.html
-
-This is the Patient Information Input Page for the Heart Disease Prediction System, built using Flask and Bootstrap 5. Key features:
-
-User Consent Prompt: Before entering information, users must agree to provide their details.
-
-![image](https://github.com/user-attachments/assets/c8910be4-78e6-4cba-940a-a53d22503193)
 
 
-Interactive Form:
 
-Collects essential health metrics such as age, gender, cholesterol, ECG results, and more.
 
-Uses dropdowns and number inputs for easy data entry.
 
-Designed with validation (required attributes) to ensure correct input.
 
-Modern Design:
 
-Gradient background for a visually appealing look.
 
-Animations (pulse effect) to enhance the user experience.
 
-Submission Process:
 
-Once completed, the form submits data to /trangxuatketqua for heart disease prediction processing.
 
-![image](https://github.com/user-attachments/assets/9ba36041-df7e-47e6-828c-8ac696f8a8f4)
 
-4, Trangxuatketqua.html
 
-This is the Prediction Result Page for the Heart Disease Prediction System, designed with Flask and Bootstrap 5. Key features:
 
-Result Display:
 
-Shows the prediction outcome from the trained model ({{ ketqua }}).
 
-Provides a friendly message advising users to consult a doctor for a proper diagnosis.
 
-Modern & Clean UI:
 
-Gradient background for an appealing design.
 
-A card-like container with a soft shadow effect.
 
-An icon for better visualization.
-
-Navigation:
-
-A custom-styled button allowing users to return to the homepage (/).
-
-![image](https://github.com/user-attachments/assets/53f5c842-806a-4e99-b2a3-d6f6046b37f2)
 
 
 
